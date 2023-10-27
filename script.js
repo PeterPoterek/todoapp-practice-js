@@ -22,7 +22,6 @@ newTaskInput.addEventListener("change", (e) => {
 const addTask = () => {
   console.log(newTask);
   taskList.push({ taskDesc: newTask, completed: false });
-  newTask = "";
 };
 
 const renderTaskList = () => {

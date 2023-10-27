@@ -12,12 +12,11 @@ taskForm.addEventListener("submit", (e) => {
   renderTaskList();
 });
 
-newTaskInput.addEventListener("change", (e) => {
+const handleTextInput = (e) => {
   newTask = e.target.value;
-  console.log(newTask);
+};
 
-  console.log(taskList);
-});
+newTaskInput.addEventListener("change", handleTextInput);
 
 const addTask = () => {
   console.log(newTask);

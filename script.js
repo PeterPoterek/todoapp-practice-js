@@ -26,15 +26,22 @@ const addTask = () => {
   newTaskInput.value = "";
 };
 
+const removeTask = (index) => {
+  taskList.splice(index, 1);
+
+  renderTaskList();
+};
 const renderTaskList = () => {
   taskListUI.innerHTML = "";
-  taskList.map((task) => {
+  taskList.map((task, index) => {
     const taskUI = document.createElement("li");
-    const completeTaskButton = document.createElement("button");
+    const removeTaskButton = document.createElement("button");
+
+    removeTaskButton.innerHTML = "Remove";
+    removeTaskButton.addEventListener("click", () => removeTask(index));
 
     taskUI.innerHTML = task.taskDesc;
-    completeTaskButton.innerHTML = "Completed";
-    taskUI.append(completeTaskButton);
+    taskUI.append(removeTaskButton);
 
     taskListUI.append(taskUI);
   });

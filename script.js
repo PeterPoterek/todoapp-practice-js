@@ -19,8 +19,11 @@ const handleTextInput = (e) => {
 newTaskInput.addEventListener("change", handleTextInput);
 
 const addTask = () => {
-  console.log(newTask);
-  taskList.push({ taskDesc: newTask, completed: false });
+  if (newTask.trim() !== "") {
+    taskList.push({ taskDesc: newTask, completed: false });
+    newTask = "";
+  }
+  newTaskInput.value = "";
 };
 
 const renderTaskList = () => {

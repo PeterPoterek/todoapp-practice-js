@@ -4,27 +4,30 @@ const newTaskButton = document.querySelector("#newTaskButton");
 const taskListUI = document.querySelector("#taskList");
 const taskList = [];
 
+let newTask = "";
 taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  addTask();
   renderTaskList();
 });
 
 newTaskInput.addEventListener("change", (e) => {
-  e.preventDefault();
-  let newTask = e.target.value;
-  if (newTask === " " || newTask.length === 0) {
-    newTaskButton.setAttribute("disabled", true);
-  } else {
-    newTaskButton.removeAttribute("disabled");
-  }
+  newTask = e.target.value;
+  console.log(newTask);
 
-  taskList.push({ taskDesc: newTask, completed: false });
   console.log(taskList);
 });
 
+const addTask = () => {
+  console.log(newTask);
+  taskList.push({ taskDesc: newTask, completed: false });
+  newTask = "";
+};
+
 const renderTaskList = () => {
+  taskListUI.innerHTML = "";
   taskList.map((task) => {
-    console.log(task);
     const taskUI = document.createElement("li");
     const completeTaskButton = document.createElement("button");
 

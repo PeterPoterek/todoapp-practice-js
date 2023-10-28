@@ -10,6 +10,8 @@ taskForm.addEventListener("submit", (e) => {
 
   addTask();
   renderTaskList();
+
+  console.log(taskList);
 });
 
 const handleTextInput = (e) => {
@@ -31,17 +33,29 @@ const removeTask = (index) => {
 
   renderTaskList();
 };
+const completeTask = (index) => {
+  taskList[index].completed = true;
+
+  renderTaskList();
+};
 const renderTaskList = () => {
   taskListUI.innerHTML = "";
   taskList.map((task, index) => {
     const taskUI = document.createElement("li");
     const removeTaskButton = document.createElement("button");
+    const completeTaskButton = document.createElement("button");
 
     removeTaskButton.innerHTML = "Remove";
     removeTaskButton.addEventListener("click", () => removeTask(index));
 
+    completeTaskButton.innerHTML = "Complete";
+    completeTaskButton.addEventListener("click", () => completeTask(index));
+
+    if (task.completed) {
+      taskUI.style.textDecoration = "line-through";
+    }
     taskUI.innerHTML = task.taskDesc;
-    taskUI.append(removeTaskButton);
+    taskUI.append(removeTaskButton, completeTaskButton);
 
     taskListUI.append(taskUI);
   });

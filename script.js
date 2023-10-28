@@ -2,6 +2,7 @@ const taskForm = document.querySelector("#taskForm");
 const newTaskInput = document.querySelector("#newTaskInput");
 const newTaskButton = document.querySelector("#newTaskButton");
 const taskListUI = document.querySelector("#taskList");
+const removeAllButton = document.querySelector("#removeAllButton");
 const taskList = [];
 
 let newTask = "";
@@ -60,3 +61,18 @@ const renderTaskList = () => {
     taskListUI.append(taskUI);
   });
 };
+
+const removeAllTasks = () => {
+  // const tasks = taskListUI.querySelectorAll("li");
+  // console.log(tasks);
+
+  // for (const task of tasks) {
+  //   task.remove();
+  // }
+
+  taskList.length = 0;
+  console.log(taskList);
+  renderTaskList();
+};
+
+removeAllButton.addEventListener("click", removeAllTasks);

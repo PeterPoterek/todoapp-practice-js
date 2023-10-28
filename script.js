@@ -34,7 +34,7 @@ const removeTask = (index) => {
   renderTaskList();
 };
 const completeTask = (index) => {
-  taskList[index].completed = true;
+  taskList[index].completed = !taskList[index].completed;
 
   renderTaskList();
 };

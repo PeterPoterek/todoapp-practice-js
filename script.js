@@ -6,40 +6,40 @@ const removeAllButton = document.querySelector("#removeAllButton");
 const taskList = [];
 
 let newTask = "";
-taskForm.addEventListener("submit", (e) => {
+taskForm.addEventListener("submit", handleTaskSubmit);
+
+function handleTaskSubmit(e) {
   e.preventDefault();
 
   addTask();
   renderTaskList();
+}
 
-  console.log(taskList);
-});
-
-const handleTextInput = (e) => {
+function handleTextInput(e) {
   newTask = e.target.value;
-};
+}
 
 newTaskInput.addEventListener("change", handleTextInput);
 
-const addTask = () => {
+function addTask() {
   if (newTask.trim() !== "") {
     taskList.push({ taskDesc: newTask, completed: false });
     newTask = "";
   }
   newTaskInput.value = "";
-};
+}
 
-const removeTask = (index) => {
+function removeTask(index) {
   taskList.splice(index, 1);
 
   renderTaskList();
-};
-const completeTask = (index) => {
+}
+function completeTask(index) {
   taskList[index].completed = !taskList[index].completed;
 
   renderTaskList();
-};
-const renderTaskList = () => {
+}
+function renderTaskList() {
   taskListUI.innerHTML = "";
   taskList.map((task, index) => {
     const taskUI = document.createElement("li");
@@ -60,12 +60,12 @@ const renderTaskList = () => {
 
     taskListUI.append(taskUI);
   });
-};
+}
 
-const removeAllTasks = () => {
+function removeAllTasks() {
   taskList.length = 0;
   console.log(taskList);
   renderTaskList();
-};
+}
 
 removeAllButton.addEventListener("click", removeAllTasks);

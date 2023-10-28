@@ -63,13 +63,6 @@ const renderTaskList = () => {
 };
 
 const removeAllTasks = () => {
-  // const tasks = taskListUI.querySelectorAll("li");
-  // console.log(tasks);
-
-  // for (const task of tasks) {
-  //   task.remove();
-  // }
-
   taskList.length = 0;
   console.log(taskList);
   renderTaskList();
